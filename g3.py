@@ -1,0 +1,47 @@
+'''Backward and forward
+====================
+
+The sign outside reads: Name no one man.
+
+"Escape. We must escape." Staring at the locked door of his cage, Beta Rabbit, spy and brilliant mathematician, has a revelation. "Of course! Name no one man - it's a palindrome! Palindromes are the key to opening this lock!" 
+
+To help Beta Rabbit crack the lock, write a function answer(n) which returns the smallest positive integer base b, at least 2, in which the integer n is a palindrome. The input n will satisfy "0 <= n <= 1000."
+
+Languages
+=========
+
+To provide a Python solution, edit solution.py
+To provide a Java solution, edit solution.java
+
+Test cases
+==========
+
+Inputs:
+    (int) n = 0
+Output:
+    (int) 2
+
+Inputs:
+    (int) n = 42
+Output:
+    (int) 4
+
+Use verify [file] to test your solution and see how it does. When you are finished editing your code, use submit [file] to submit your answer. If your solution passes the test cases, it will be removed from your home folder.
+'''
+def answer(n):
+    # your code here
+    base = 2
+    ansFound = False
+    while not ansFound:
+        orig = n
+        lis = []
+        while orig != 0:
+            lis.append(orig%base)
+            orig = orig // base
+        if lis == lis[::-1]:
+            ansFound = True
+        else:
+            base += 1
+    return base
+
+print(answer(42))
